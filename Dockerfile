@@ -1,11 +1,9 @@
-from python:3.10
+FROM alpine:3
 
-WORKDIR /src
+RUN ["/bin/sh", "-c", "apk add --update --no-cache py3-pip bash git ca-certificates jq aws-cli"]
 
-COPY . .
+COPY ["src", "/src/"]
 
-RUN pip install -r requirements.txt
+RUN pip3 install semver
 
-RUN PYTHONUNBUFFERED=1
-
-ENTRYPOINT ["python", "-u", "/src/main.py"]
+ENTRYPOINT ["/src/main.sh"]
