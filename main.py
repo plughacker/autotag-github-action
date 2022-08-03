@@ -17,8 +17,6 @@ def main():
     Repo.clone_from(f"https://{github_token}@github.com/{repository}.git", "application")
     os.chdir("application")
 
-    os.listdir()
-
     commit_message= os.popen("git log --format=%b | head -n 1 | tr '[A-Z]' '[a-z]'").read()
     latest_tag=os.popen("git tag --list | sort -r | head -n 1").read().removeprefix("v")
     
@@ -47,7 +45,7 @@ def main():
 
     repo = Repo("")
 
-    new_tag = repo.create_tag(f"v{bump_version}")
+    new_tag = repo.create_tag(f"{bump_version}")
     repo.remotes.origin.push(new_tag)
 
 if __name__=='__main__':
