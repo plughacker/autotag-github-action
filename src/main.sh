@@ -9,7 +9,6 @@ main(){
     git config --global user.name ${git_username}
     git config --global user.email ${git_user_email}
 
-
     git clone "https://${gh_token}@github.com/${repository}.git" "application"
 
     cd application

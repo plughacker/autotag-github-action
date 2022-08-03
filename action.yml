@@ -6,7 +6,7 @@ inputs:
     description: 'The path of the GitHub repository'
     required: true
 
-  github_token:
+  gh_token:
     description: 'The GitHub Token with repo access'
     required: true
 
