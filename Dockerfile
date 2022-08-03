@@ -6,4 +6,6 @@ COPY . .
 
 RUN pip install -r requirements.txt
 
-ENTRYPOINT ["python", "/src/main.py"]
+RUN PYTHONUNBUFFERED=1
+
+ENTRYPOINT ["python", "-u", "/src/main.py"]
