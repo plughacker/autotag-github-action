@@ -23,19 +23,15 @@ main(){
 
     case $commit_message in
         *hotfix*)
-            echo "hotfix"
-            TAG=hotfix-$(pysemver bump patch ${latest_tag})
+            TAG=hotfix-$(pysemver bump major ${latest_tag})
             ;;
-        *major*)
-            echo "major"
-            TAG=$(pysemver bump major ${latest_tag})
-            ;;
-        *minor*)
-            echo "minor"
+        *chore*)
             TAG=$(pysemver bump minor ${latest_tag})
             ;;
-        *patch*)
-            echo "minor"
+        *feat*)
+            TAG=$(pysemver bump minor ${latest_tag})
+            ;;
+        *fix*)
             TAG=$(pysemver bump patch ${latest_tag})
             ;;
         *)
