@@ -21,6 +21,10 @@ main(){
 
     echo $latest_tag
 
+    if [ -z $latest_tag ];  then
+	    latest_tag="0.0.0"
+    fi
+
     case $commit_message in
         *hotfix*)
             TAG=hotfix-$(pysemver bump major ${latest_tag})
