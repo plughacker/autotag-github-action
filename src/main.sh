@@ -26,13 +26,13 @@ main(){
             TAG=hotfix-$(pysemver bump major ${latest_tag})
             ;;
         *chore*)
-            TAG=$(pysemver bump minor ${latest_tag})
+            TAG=v$(pysemver bump minor ${latest_tag})
             ;;
         *feat*)
-            TAG=$(pysemver bump minor ${latest_tag})
+            TAG=v$(pysemver bump minor ${latest_tag})
             ;;
         *fix*)
-            TAG=$(pysemver bump patch ${latest_tag})
+            TAG=v$(pysemver bump patch ${latest_tag})
             ;;
         *)
 
