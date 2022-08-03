@@ -26,7 +26,7 @@ main(){
     fi
 
     case $commit_message in
-        *hotfix*)
+        *feat!*)
             TAG=hotfix-$(pysemver bump major ${latest_tag})
             ;;
         *chore*)
@@ -40,7 +40,7 @@ main(){
             ;;
         *)
 
-        echo "[+] commit needs to follow the always (chore, feat, fix and hotfix) in the merge commit message."
+        echo "[+] commit needs to follow the always (chore, feat, feat!, fix and hotfix) in the merge commit message."
         exit 1
         ;;
     esac
