@@ -3,6 +3,7 @@
 import os
 import semver
 import shutil
+import sys
 
 from git import Repo
 
@@ -35,6 +36,10 @@ def main():
 
     elif 'patch' in commit_message.lower():
         bump_version = semver.bump_patch(latest_tag)
+
+    if bump_version == "":
+        print("commit needs to follow the always (major, minor, patch and hotfix) in the merge commit message.")
+        sys.exit(1)
 
     print(f"Bump version: {bump_version}")
 
