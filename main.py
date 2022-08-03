@@ -26,7 +26,7 @@ def main():
     bump_version = ""
 
     if 'hotfix' in commit_message.lower():
-        bump_version = f"hotfix-v{latest_tag}"
+        bump_version = f"hotfix-{latest_tag}"
     
     elif 'major' in commit_message.lower():
         bump_version = semver.bump_major(latest_tag)
