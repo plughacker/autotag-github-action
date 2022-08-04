@@ -26,21 +26,27 @@ main(){
     fi
 
     case $commit_message in
-        *feat!*)
-            TAG=hotfix-$(pysemver bump major ${latest_tag})
+        breaking*)
+            TAG=v$(pysemver bump major ${latest_tag})
             ;;
-        *chore*)
+        chore*)
             TAG=v$(pysemver bump minor ${latest_tag})
             ;;
-        *feat*)
+        feat*)
             TAG=v$(pysemver bump minor ${latest_tag})
             ;;
-        *fix*)
+        feat!*)
+            TAG=v$(pysemver bump major ${latest_tag})
+            ;;
+        fix*)
             TAG=v$(pysemver bump patch ${latest_tag})
+            ;;
+        hotfix*)
+            TAG=v$(pysemver bump patch ${latest_tag})-hotfix
             ;;
         *)
 
-        echo "[+] commit needs to follow the always (chore, feat, feat!, fix and hotfix) in the merge commit message."
+        echo "[+] commit needs to follow the always (chore, feat, feat!, fix) in the merge commit message."
         exit 1
         ;;
     esac
