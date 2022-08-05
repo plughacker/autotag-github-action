@@ -5,11 +5,12 @@ main(){
     repository=${INPUT_REPOSITORY}
     git_username=${INPUT_GIT_USERNAME}
     git_user_email=${INPUT_GIT_USER_EMAIL}
+    git_branch_ref=${INPUT_GIT_BRANCH_REF}
 
     git config --global user.name ${git_username}
     git config --global user.email ${git_user_email}
 
-    git clone "https://${gh_token}@github.com/${repository}.git" "application"
+    git clone -b  ${git_branch_ref} "https://${gh_token}@github.com/${repository}.git" "application"
 
     cd application
 

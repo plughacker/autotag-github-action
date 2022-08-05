@@ -10,6 +10,10 @@ inputs:
     description: 'The GitHub Token with repo access'
     required: true
 
+  git_branch_ref:
+    description: 'Git branch reference'
+    required: true
+
   git_username:
     description: 'GitHub account user name'
     required: true
