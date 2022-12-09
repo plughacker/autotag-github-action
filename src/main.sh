@@ -14,7 +14,7 @@ main(){
 
     cd application
 
-    commit_message=$(git log --format=%b | head -n 1 | tr '[A-Z]' '[a-z]')
+    commit_message=$(git log --pretty=format:%s | head -n 1 | tr '[A-Z]' '[a-z]')
     latest_tag=$(git describe --abbrev=0 --tags)
 
     latest_tag=${latest_tag#"v"}
@@ -27,29 +27,28 @@ main(){
     fi
 
     case $commit_message in
-        breaking*)
+        *breaking*)
             TAG=v$(pysemver bump major ${latest_tag})
             ;;
-        chore*)
+        *chore*)
             TAG=v$(pysemver bump minor ${latest_tag})
             ;;
-        feat*)
+        *feat*)
             TAG=v$(pysemver bump minor ${latest_tag})
             ;;
-        feat!*)
+        *feat!*)
             TAG=v$(pysemver bump major ${latest_tag})
             ;;
-        fix*)
+        *fix*)
             TAG=v$(pysemver bump patch ${latest_tag})
             ;;
-        hotfix*)
+        *hotfix*)
             TAG=v$(pysemver bump patch ${latest_tag})-hotfix
             ;;
         *)
-
-        echo "[+] commit needs to follow the always (chore, feat, feat!, fix) in the merge commit message."
-        exit 1
-        ;;
+	        echo "[+] bump minor version"
+	        TAG=v$(pysemver bump minor ${latest_tag})
+	    ;;
     esac
 
     git tag -a ${TAG} -m "Automatic tag by autotag github action - ${TAG}"
