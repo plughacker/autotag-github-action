@@ -46,10 +46,9 @@ main(){
             TAG=v$(pysemver bump patch ${latest_tag})-hotfix
             ;;
         *)
-
-        echo "[+] commit needs to follow the always (chore, feat, feat!, fix) in the merge commit message."
-        exit 1
-        ;;
+	        echo "[+] bump minor version"
+	        TAG=v$(pysemver bump minor ${latest_tag})
+	    ;;
     esac
 
     git tag -a ${TAG} -m "Automatic tag by autotag github action - ${TAG}"
