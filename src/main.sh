@@ -14,7 +14,7 @@ main(){
 
     cd application
 
-    commit_message=$(git log --pretty=format:%s | head -n 1 | tr '[A-Z]' '[a-z]')
+    commit_message=$(git log --format=%b | head -n 1 | tr '[A-Z]' '[a-z]')
     latest_tag=$(git describe --abbrev=0 --tags)
 
     latest_tag=${latest_tag#"v"}
