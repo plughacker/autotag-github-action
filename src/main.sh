@@ -39,7 +39,7 @@ main(){
         *feat!*)
             TAG=v$(pysemver bump major ${latest_tag})
             ;;
-        *fix*)
+        fix*)
             TAG=v$(pysemver bump patch ${latest_tag})
             ;;
         *hotfix*)
